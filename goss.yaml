@@ -5,7 +5,7 @@ file:
     owner: root
     group: root
 
-  .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
+  /helm/.config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
     exists: true
     mode: "0755"
     owner: root
@@ -17,4 +17,3 @@ command:
 
   helm version:
     exit-status: 0
-    stdout: ["v0.154"]
