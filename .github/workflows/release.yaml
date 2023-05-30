@@ -29,7 +29,7 @@ jobs:
       uses: e1himself/goss-installation-action@v1.0.3
 
     - name: Execute Goss tests
-      run: dgoss run ${{ env.TEST_TAG }}
+      run: dgoss run ${{ env.TEST_TAG }} sleep 60
 
     -
       name: Build and push
