@@ -1,8 +1,12 @@
 name: Release
 
-on:
+# Run this on push, manual trigger and once a month
+on: 
+  push:
+  workflow_dispatch:
   schedule:
-  - cron: "0 12 1 * *"
+    - cron: "0 12 1 * *"
+
 
 env:
   TEST_TAG: ghcr.io/${{ github.repository }}:latest
