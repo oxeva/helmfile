@@ -1,0 +1,20 @@
+file:
+  /usr/local/bin/sops:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+
+  .config/kustomize/plugin/goabout.com/v1beta1/sopssecretgenerator/SopsSecretGenerator:
+    exists: true
+    mode: "0755"
+    owner: root
+    group: root
+
+command:
+  sops -v:
+    exit-status: 0
+
+  helm version:
+    exit-status: 0
+    stdout: "v0.154"

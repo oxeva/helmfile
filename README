@@ -1,0 +1,6 @@
+Base image with : 
+- helm
+- sopssecretgenerator
+- sops
+
+Come with goss file to test image.

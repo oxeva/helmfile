@@ -1,5 +1,10 @@
 name: Release
 on: workflow_dispatch
+
+env:
+  TEST_TAG: ghcr.io/${{ github.repository }}:latest
+  LATEST_TAG: ghcr.io/${{ github.repository }}:latest
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -11,7 +16,26 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - uses: docker/build-push-action@v3
+
+    - 
+      name: Build and export to Docker
+      uses: docker/build-push-action@v4
       with:
+        context: .
+        load: true
+        tags: ${{ env.TEST_TAG }}
+
+    - name: Install Goss
+      uses: e1himself/goss-installation-action@v1.0.3
+
+    - name: Execute Goss tests
+      run: dgoss run ${{ env.TEST_TAG }}
+
+    -
+      name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        platforms: linux/amd64
         push: true
-        tags: ghcr.io/${{ github.repository }}:latest
+        tags: ${{ env.LATEST_TAG }}
