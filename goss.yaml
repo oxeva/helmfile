@@ -17,4 +17,4 @@ command:
 
   helm version:
     exit-status: 0
-    stdout: "v0.154"
+    stdout: ["v0.154"]
